@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#logo{
+  width: 73px;
+}
+
+/* :root {
+  --tamanho-header: 80px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(109vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-footer: 65px;
+} */
+
+.container {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.container_segunda{
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.primeira_tela{
+  /* background-color: rgba(0, 255, 255, 0.358); */
+
+  background-image: url(/assets/praia-wallpaper.jpg);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  /* background-image: url(/assets/desenho-praia.jpg); */
+}
+
+.header {
+  /* border-bottom: 2px solid #32b9cd; */
+  background-color: transparent;
+  /* border: 2px black solid; */
+  height: 13%;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  background-color: transparent;
+}
+
+.header a {
+  color: white;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.navbar {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: white;
+  margin-right: 45px;
+}
+
+.navbar a{
+  text-decoration: none;
+}
+
+.logo_titulo{
+  display: flex;
+  width: auto;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.titulo {
+  color: #e3b062;
+  /* width: fit-content; */
+  font-weight: 500;
+  font-size: 40px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* BANNER */
+
+.banner {
+  height: 80%;
+  color: #e3b062;
+  background-size: cover;
+}
+
+.banner .container {
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+}
+
+.banner .container p {
+  width: 50%;
+  margin-left: 45px;
+  padding: 0;
+  font-size: 36px;
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+
+/* MISSÃO VISÃO VALORES */
+
+.segunda_tela {
+  background-color: transparent;
+  display: flex;
+  height: 100vh;
+  color: #e3b062;
+}
+
+.container_segunda{
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+#atividades{
+  font-size: 30px;
+}
+
+.informacoes{
+  width: 350px;
+  margin: 5px;
+}
+
+.social .container {
+  justify-content: space-around;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.box img {
+  height: 100%;
+}
+
+.social .container .boxes {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.social p {
+  text-align: start;
+}
+
+.box {
+  display: flex;
+  align-items: start;
+  height: 30vh;
+  width: 680px;
+  /* margin: 10px; */
+  /* content: 10px; */
+  justify-content: space-between;
+  background-color: white;
+  font-size: 17px;
+  border: black solid 2px;
+  border-radius: 5px;
+}
+
+.boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.terceira_tela {
+  height: 80vh;
+  justify-content: center;
+  background-color: aqua;
+}
+
+.convite{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.convite #slogan{
+  text-align: center;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.convite a{
+  color: #e3b062
+}
+
+#btn_criar_conta {
+  width: 170px;
+  
+  /* list-style: none; */
+  background-color: black;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 20px;
+}
+
+#btn_criar_conta a{
+  color: white;
+  text-decoration: none;
+}
+
+p span{
+  font-weight: 800;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: #32b9cd;
+  height: 20vh;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
+
+/* LOGIN */
+
+.geral{
+  background-color: transparent;
+}
+
+.login {
+  /* background-image: url('/assets/desenho-praia.jpg'); */
+  background-size: cover;
+  display: flex;
+  height: 80%;
+  align-items: center;
+}
+
+.login .container {
+  justify-content: center;
+  
+}
+
+.card {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.756);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: rgb(222, 197, 36);
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.formulario {
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.formulario span {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.formulario input {
+  border: 2px solid #32b9cd;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.formulario select {
+  border: 2px solid #32b9cd;
+  background-color: white;
+  color: rgba(128, 128, 128, 0);
+  height: 36px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
+}
+
+.botao {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background-color: rgb(222, 197, 36);
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+/* FORMULARIO */
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: rgb(222, 197, 36) 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 2px solid #32b9cd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.btn {
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: white;
+  background-color: rgb(222, 197, 36);
+  width: 120px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+/* SIMULADOR */
+
+.simulador {
+  color: white;
+}
+
+.simulador .container {
+  flex-direction: column;
+  overflow: scroll; 
+  height: var(--tamanho-simulador);
+}
+
+/* ALERTA */
+
+#alerta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.mensagem-alarme {
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mensagem-alarme h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mensagem-alarme .informacao {
+  width: 66%;
+}
+
+.alarme-sino {
+  width: 48px;
+  height: 48px;
+  animation-name: bell;
+  animation-duration: 4s;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+  background-size: cover;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bell {
+  0%   {transform: rotate(25deg)}
+  25%  {transform: rotate(-25deg)}
+  50%  {transform: rotate(25deg)}
+  75%  {transform: rotate(-25deg)}
+  100% {transform: rotate(25deg)}
+}
+
+/* .logo_footer{
+  width: 5%;
+} */
+/* 
+.contatos{
+ 
+} */
+
+.footer .container{
+  width: 100%;
+  justify-content: space-around;
+}
+
+.footer #logo{
+  width: 80px;
+}
