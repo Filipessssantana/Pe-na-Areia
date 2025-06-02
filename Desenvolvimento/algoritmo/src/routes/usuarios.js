@@ -12,4 +12,20 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.get("/listarCantores", function (req, res) {
+    usuarioController.listarCantores(req, res);
+})
+
+router.get("/listarGrupos", function (req, res) {
+    usuarioController.listarGrupos(req, res);
+});
+
+router.get("/listarCantorFavorito", function (req, res) {
+    usuarioController.listarCantorFavorito(req, res);
+});
+
+router.get("/listarGrupoFavorito", function (req, res) {
+    usuarioController.listarGrupoFavorito(req, res);
+});
+
 module.exports = router;

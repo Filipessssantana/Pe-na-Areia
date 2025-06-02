@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pé na Areia | Página Home</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/cantores.css">
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<!-- onload carrega a função ao carregar a página -->
+<body onload="listar()">
+  <div class="primeira_tela">
+    <div class="header">
+      <div class="container">
+        <div class="logo_titulo">
+          <img src="/assets/logo.png" alt="" id="logo">
+          <div class="titulo">Pé na Areia</div>
+        </div>
+        <ul class="navbar">
+          <li class="agora">
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="cantores.html">Cantores</a>
+          </li>
+          <li>
+            <a href="grupos.html">Grupos</a>
+          </li>
+          <li>
+            <a href="dashboard_cantores.html">Dash Cantores</a>
+          </li>
+          <li>
+            <a href="dashboard_grupos.html">Dash Grupos</a>
+          </li>
+          <li>
+            <a href="quiz.html">Quiz</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="banner">
+      <div class="container">
+        <p>Escolha seu cantor favorito e veja quantas pessoas também o escolheram</p>
+      </div>
+    </div>
+    
+    <div class="boxes" id="lista_cantores">
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="contatos">
+        <div class="contato">
+          (11) 95530-0105
+        </div>
+        <div class="contato">
+          (11) 95530-0105
+        </div>
+        <div class="contato" id="email">
+          penaareia@gmail.com
+        </div>
+      </div>
+      <div class="copyright">
+        <h4>Pé na Areia &copy; 2025. Todos os direitos reservados.<br>
+          Desenvolvido por Filipe Santana.</h4>
+        <span class="version">v1.0.0</span>
+      </div>
+      <div>
+        <img src="../assets/logo.png" alt="logo" id="logo">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  // async espera a função trazer algo para carregar o conteúdo (para carregar os dados a todos de uma vez)
+  async function listar() {
+
+    // await é a dupla do async, uma variável só recebe um valor quando a outra terminar
+    // fetch retorna dados de um servidor
+    var mensagem = ""
+    const resp = await fetch('/usuarios/listarCantores/')
+    const dadosCantor = await resp.json()
+    console.log(dadosCantor)
+
+    for(var i = 0; i < dadosCantor.length; i++) {
+
+      mensagem += `
+      <div class="cantor">
+        <img src="${dadosCantor[i].foto}" alt="imagem">
+        <div class="nome-cantor">
+          ${dadosCantor[i].nome}
+        </div>
+      </div>
+      `
+    }
+
+    lista_cantores.innerHTML = mensagem
+  }
+
+  listar()
+</script>

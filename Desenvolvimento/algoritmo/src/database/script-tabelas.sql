@@ -1,62 +1,130 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+CREATE DATABASE pe_na_areia;
 
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
-);
+USE pe_na_areia;
 
 CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+idUsuario int primary key auto_increment,
+nome varchar(70),
+email varchar(70) unique,
+senha varchar(30)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+INSERT INTO usuario VALUES
+	(default, 'Fernando Ramirez', 'fernando.gutierrez@sptech.school', 'senha001'),
+    (default, 'Diogo Procópio', 'diogo.procopio@sptech.school', 'senha002'),
+    (default, 'André Lacerda', 'andre.lacerda@sptech.school', 'senha003');
+
+CREATE TABLE catalogoCantor (
+idCantor int primary key auto_increment,
+nome varchar(70),
+idade date,
+principalHit varchar(30)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+INSERT INTO catalogoCantor VALUES
+	(default, '../assets/thiaguinho.png', 'Thiaguinho', '1983-03-11', 'Ousadia e Alegria'),
+    (default, '../assets/pericles.png', 'Péricles', '1969-06-22', 'Final de Tarde'),
+    (default, '../assets/ferrugem.png', 'Ferrugem', '1988-10-20', 'Pirata e Tesouro'),
+    (default, '../assets/belo.png', 'Belo', '1983-03-11', 'Desafio'),
+    (default, '../assets/dilsinho.png', 'Dilsinho', '1983-03-11', 'Péssimo Negócio'),
+    (default, '../assets/mumuzinho.png', 'Mumuzinho', '1983-03-11', 'Fulminante'),
+    (default, '../assets/diogo_nogueira.png', 'Diogo Nogueira', '1983-03-11', 'Clareou'),
+    (default, '../assets/ludmilla.png', 'Ludmilla', '1983-03-11', 'Hoje'),
+    (default, '../assets/marvila.png', 'Márvila', '1983-03-11', 'Pode Apostar'),
+    (default, '../assets/rodriguinho.png', 'Rodriguinho', '1983-03-11', 'Falta de Atenção');
+
+CREATE TABLE cantoresFavoritos (
+fkCantor int,
+fkUsuario int,
+constraint pkCantoresFavoritos
+	PRIMARY KEY (fkCantor, fkUsuario),
+ranking int,
+constraint fkCantorUsuario
+	foreign key (fkCantor) references catalogoCantor(idCantor),
+	foreign key (fkUsuario) references usuario(idUsuario)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+INSERT INTO cantoresFavoritos VALUES
+	(1, 1, 1),
+    (2, 1, 2),
+    (3, 1, 3),
+    (4, 2, 3),
+    (5, 2, 2),
+    (6, 2, 1),
+    (7, 3, 3),
+    (8, 3, 1),
+    (9, 3, 2);
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+CREATE TABLE catalogoGrupo (
+idGrupo int primary key auto_increment,
+nome varchar(70),
+idade date,
+principalHit varchar(30)
 );
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+INSERT INTO catalogoGrupo VALUES
+	(default, '../assets/turma_do_pagode.png', 'Turma do Pagode', '1983-03-11', 'Lancinho'),
+    (default, '../assets/exaltassamba.png', 'Exaltassamba', '1983-03-11', 'Livre pra Voar'),
+    (default, '../assets/menos_e_mais.png', 'Menos é Mais', '1983-03-11', 'Adorei'),
+    (default, '../assets/pixote.png', 'Pixote', '1983-03-11', 'Insegurança'),
+    (default, '../assets/grupo_revelacao.png', 'Grupo Revelação', '1983-03-11', 'Deixa Acontecer'),
+    (default, '../assets/soweto.png', 'Soweto', '1983-03-11', 'Derê'),
+    (default, '../assets/jeito_moleque.png', 'Jeito Moleque', '1983-03-11', 'Me Faz Feliz'),
+    (default, '../assets/katinguele.png', 'Katinguelê', '1983-03-11', 'Inaraí'),
+    (default, '../assets/bom_gosto.png', 'Bom Gosto', '1983-03-11', 'Patricinha do Olho Azul'),
+    (default, '../assets/sorriso_maroto.png', 'Sorriso Maroto', '1983-03-11', 'Futuro Prometido'),
+    (default, '../assets/di_proposito.png', 'Di Propósito', '1983-03-11', 'Manda Áudio');
+
+CREATE TABLE gruposFavoritos (
+fkGrupo int,
+fkUsuario int,
+constraint pkCantoresFavoritos
+	PRIMARY KEY (fkGrupo, fkUsuario),
+ranking int,
+constraint fkGrupoUsuario
+	foreign key (fkGrupo) references catalogoGrupo(idGrupo),
+	foreign key (fkUsuario) references usuario(idUsuario)
+);
+
+INSERT INTO gruposFavoritos VALUES
+	(1, 1, 1),
+    (2, 1, 2),
+    (3, 1, 3),
+    (4, 2, 3),
+    (5, 2, 2),
+    (6, 2, 1),
+    (7, 3, 3),
+    (8, 3, 1),
+    (9, 3, 2);
+
+CREATE TABLE quiz (
+idQuiz int primary key auto_increment,
+nome varchar(30),
+tipo varchar(30),
+dtQuiz datetime
+);
+
+INSERT INTO quiz(nome, tipo) VALUES
+	('Qual é a música?', 'música'),
+    ('Quem é o cantor?', 'cantor'),
+    ('Complete a música?', 'completar'),
+    ('De quando é?', 'data');
+
+CREATE TABLE pontuacao (
+fkQuiz int,
+fkUsuario int,
+idPontuacao int,
+constraint pkQuizUsuario
+	PRIMARY KEY (fkQuiz, fkUsuario, idPontuacao),
+acertos int,
+erros int,
+constraint fkQuizUsuario
+	foreign key (fkQuiz) references quiz(idQuiz),
+	foreign key (fkUsuario) references usuario(idUsuario)
+);
+
+INSERT INTO pontuacao VALUES
+	(1, 1, 1, 6, 4),
+    (2, 1, 2, 7, 3),
+    (3, 2, 3, 3, 7),
+    (4, 3, 4, 5, 5);
