@@ -28,4 +28,8 @@ router.get("/listarGrupoFavorito", function (req, res) {
     usuarioController.listarGrupoFavorito(req, res);
 });
 
+// router.post("/adicionarFavoritos", function (req, res) {
+//     usuarioController.adicionarFavoritos(req, res);
+// });
+
 module.exports = router;

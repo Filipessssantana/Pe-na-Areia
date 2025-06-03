@@ -16,6 +16,7 @@
 </head>
 
 <!-- onload carrega a função ao carregar a página -->
+
 <body onload="listar()">
   <div class="primeira_tela">
     <div class="header">
@@ -26,19 +27,13 @@
         </div>
         <ul class="navbar">
           <li class="agora">
-            <a href="#">Home</a>
+            <a href="home.html">Home</a>
           </li>
           <li>
-            <a href="cantores.html">Cantores</a>
+            <a href="#">Artistas</a>
           </li>
           <li>
-            <a href="grupos.html">Grupos</a>
-          </li>
-          <li>
-            <a href="dashboard_cantores.html">Dash Cantores</a>
-          </li>
-          <li>
-            <a href="dashboard_grupos.html">Dash Grupos</a>
+            <a href="dashboard_cantores.html">Dashboard</a>
           </li>
           <li>
             <a href="quiz.html">Quiz</a>
@@ -47,40 +42,44 @@
       </div>
     </div>
 
-    <div class="banner">
+    <div class="container-boxes">
+      <div class="boxes-especificos">
+        <p>Escolha seus três cantores favoritos e veja quantas pessoas também os escolheram</p>
+        <div class="boxes" id="lista_cantores">
+        </div>
+      </div>
+      <div class="boxes-especificos">
+        <p>Escolha seus três grupos favoritos e veja quantas pessoas também os escolheram</p>
+        <div class="boxes" id="lista_grupos">
+        </div>
+      </div>
+    </div>
+    <div class="footer">
       <div class="container">
-        <p>Escolha seu cantor favorito e veja quantas pessoas também o escolheram</p>
+        <div class="contatos">
+          <div class="contato">
+            <img src="./assets/icon/whatsapp.png" alt="">
+            (11) 95530-0105
+          </div>
+          <div class="contato">
+            <img src="./assets/icon/telefone.png" alt="">
+            (11) 95530-0105
+          </div>
+          <div class="contato" id="email">
+            <img src="./assets/icon/email.png" alt="">
+            penaareia@gmail.com
+          </div>
+        </div>
+        <div class="copyright">
+          <h4>Pé na Areia &copy; 2025. Todos os direitos reservados.<br>
+            Desenvolvido por Filipe Santana.</h4>
+          <span class="version">v1.0.0</span>
+        </div>
+        <div>
+          <img src="/assets/logo.png" alt="logo" id="logo">
+        </div>
       </div>
     </div>
-    
-    <div class="boxes" id="lista_cantores">
-    </div>
-
-  </div>
-
-  <div class="footer">
-    <div class="container">
-      <div class="contatos">
-        <div class="contato">
-          (11) 95530-0105
-        </div>
-        <div class="contato">
-          (11) 95530-0105
-        </div>
-        <div class="contato" id="email">
-          penaareia@gmail.com
-        </div>
-      </div>
-      <div class="copyright">
-        <h4>Pé na Areia &copy; 2025. Todos os direitos reservados.<br>
-          Desenvolvido por Filipe Santana.</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-      <div>
-        <img src="../assets/logo.png" alt="logo" id="logo">
-      </div>
-    </div>
-  </div>
 </body>
 
 </html>
@@ -92,25 +91,79 @@
 
     // await é a dupla do async, uma variável só recebe um valor quando a outra terminar
     // fetch retorna dados de um servidor
-    var mensagem = ""
-    const resp = await fetch('/usuarios/listarCantores/')
-    const dadosCantor = await resp.json()
+    var mensagem_cantores = ""
+    var mensagem_grupos = ""
+    const respCantores = await fetch('/usuarios/listarCantores/')
+    const dadosCantor = await respCantores.json()
     console.log(dadosCantor)
 
-    for(var i = 0; i < dadosCantor.length; i++) {
+    const respGrupos = await fetch('/usuarios/listarGrupos/')
+    const dadosGrupo = await respGrupos.json()
+    console.log(dadosGrupo)
 
-      mensagem += `
-      <div class="cantor">
+    for (var i = 0; i < dadosCantor.length; i++) {
+
+      mensagem_cantores += `
+      <div class="artistas">
         <img src="${dadosCantor[i].foto}" alt="imagem">
-        <div class="nome-cantor">
-          ${dadosCantor[i].nome}
+        <div class="texto-artistas">
+          <div class="nome-artistas">
+            ${dadosCantor[i].nome}
+          </div>
+          <div class="informacoes-artistas">
+            <b>Idade:</b> ${dadosCantor[i].idade}
+            <br>
+            <b>Maior Hit:</b> ${dadosCantor[i].principalHit}
+          </div>
         </div>
       </div>
       `
     }
 
-    lista_cantores.innerHTML = mensagem
+    for (var i = 0; i < dadosGrupo.length; i++) {
+
+      mensagem_grupos += `
+      <div class="artistas" onclick = "enviar()">
+        <img src="${dadosGrupo[i].foto}" alt="imagem">
+        <div class="texto-artistas">
+          <div class="nome-artistas">
+            ${dadosGrupo[i].nome}
+          </div>
+          <div class="informacoes-artistas">
+            <b>Idade:</b> ${dadosGrupo[i].idade}
+            <br>
+            <b>Maior Hit:</b> ${dadosGrupo[i].principalHit}
+          </div>
+        </div>
+      </div>
+      `
+    }
+
+    lista_cantores.innerHTML = mensagem_cantores
+    lista_grupos.innerHTML = mensagem_grupos
   }
 
   listar()
+
+  // function enviar() {
+
+    
+  //   var escolhidos = []
+  //   const respCantores = fetch('/usuarios/listarCantores/')
+  //   const dadosCantor = respCantores.json()
+
+  //   var fotoVar = dadosCantor.foto
+
+  //   fetch("/usuarios/adicionarFavoritos", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       nomeServer: nomeVar,
+  //       emailServer: emailVar,
+  //       senhaServer: senhaVar,
+  //     }),
+  //   })
+  // }
 </script>

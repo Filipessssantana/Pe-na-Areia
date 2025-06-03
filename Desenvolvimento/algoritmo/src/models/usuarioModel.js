@@ -29,7 +29,13 @@ function listarCantores() {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        SELECT * FROM catalogoCantor;`
+        SELECT catalogoCantor.idCantor,
+        catalogoCantor.foto,
+        catalogoCantor.nome,
+	   catalogoCantor.principalHit,
+       catalogoCantor.dtNasc,
+	   TIMESTAMPDIFF(YEAR, dtNasc, CURDATE()) AS idade
+       FROM catalogoCantor;`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql); 
 }
@@ -39,21 +45,47 @@ function listarGrupos() {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        SELECT * FROM catalogoGrupo;`
+        SELECT catalogoGrupo.idGrupo,
+        catalogoGrupo.foto,
+        catalogoGrupo.nome,
+	   catalogoGrupo.principalHit,
+       catalogoGrupo.dtNasc,
+	   TIMESTAMPDIFF(YEAR, dtNasc, CURDATE()) AS idade
+       FROM catalogoGrupo;`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql); 
 }
 
 function listarCantorFavorito() {
     var instrucaoSql = `
-        SELECT * FROM cantoresFavoritos;`
+        SELECT catalogoCantor.nome,
+	   fkCantor, COUNT(*) AS qtdEscolhidoCantor
+	   FROM cantoresFavoritos JOIN
+	   catalogoCantor
+       ON idCantor = fkCantor
+        GROUP BY fkCantor
+        ORDER BY qtdEscolhidoCantor;`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql); 
 }
 
 function listarGrupoFavorito() {
     var instrucaoSql = `
-        SELECT * FROM gruposFavoritos;`
+        SELECT catalogoGrupo.nome,
+	   fkGrupo, COUNT(*) AS qtdEscolhidoGrupo
+	   FROM gruposFavoritos JOIN
+	   catalogoGrupo
+       ON idGrupo = fkGrupo
+        GROUP BY fkGrupo
+        ORDER BY qtdEscolhidoGrupo;`
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function adicionarFavoritos(fkCantor, fkUsuario, ranking) {
+    var instrucaoSql = `
+        INSERT INTO cantoresFavoritos (fkCantor, fkUsuario) VALUES ('${fkCantor}', '${fkUsuario}', '${ranking}');
+    `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -64,5 +96,6 @@ module.exports = {
     listarCantores,
     listarGrupos,
     listarCantorFavorito,
-    listarGrupoFavorito
+    listarGrupoFavorito,
+    adicionarFavoritos
 };

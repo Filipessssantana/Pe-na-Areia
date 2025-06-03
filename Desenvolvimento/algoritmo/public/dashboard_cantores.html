@@ -27,19 +27,13 @@
         </div>
         <ul class="navbar">
           <li class="agora">
-            <a href="#">Home</a>
+            <a href="home.html">Home</a>
           </li>
           <li>
             <a href="cantores.html">Cantores</a>
           </li>
           <li>
-            <a href="grupos.html">Grupos</a>
-          </li>
-          <li>
-            <a href="dashboard_cantores.html">Dash Cantores</a>
-          </li>
-          <li>
-            <a href="dashboard_grupos.html">Dash Grupos</a>
+            <a href="#">Dashboard</a>
           </li>
           <li>
             <a href="quiz.html">Quiz</a>
@@ -55,22 +49,28 @@
           <canvas id="myChart"></canvas>
         </div>
       </div>
+      <div class="container">
+        Gráfico de grupos
+        <div class="grafico">
+          <canvas id="myChart2"></canvas>
+        </div>
+      </div>
     </div>
-
-
-
   </div>
 
   <div class="footer">
     <div class="container">
       <div class="contatos">
         <div class="contato">
+          <img src="./assets/icon/whatsapp.png" alt="">
           (11) 95530-0105
         </div>
         <div class="contato">
+          <img src="./assets/icon/telefone.png" alt="">
           (11) 95530-0105
         </div>
         <div class="contato" id="email">
+          <img src="./assets/icon/email.png" alt="">
           penaareia@gmail.com
         </div>
       </div>
@@ -89,38 +89,73 @@
 </html>
 
 <script>
-  
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(0, 0, 255)',
-      borderColor: 'rgb(0, 0, 255)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
+  async function listar() {
+
+    const respCantor = await fetch('/usuarios/listarCantorFavorito/')
+    const dadosCantor = await respCantor.json()
+    console.log(dadosCantor)
+
+    var labels_cantores = [];
+    var quantidade_cantores = [];
+
+    for (var i = 0; i < dadosCantor.length; i++) {
+      labels_cantores[i] = dadosCantor[i].nome
+      quantidade_cantores[i] = dadosCantor[i].qtdEscolhidoCantor
+    }
+
+    const data_cantor = {
+      labels: labels_cantores,
+      datasets: [{
+        label: 'Cantores Favoritos',
+        backgroundColor: 'rgb(255, 0, 0)',
+        borderColor: 'rgb(255, 0, 0)',
+        data: quantidade_cantores,
+      }]
+    }
+
+    const config = {
+      type: 'bar',
+      data: data_cantor,
+      options: {}
+    }
+    let myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    )
+
+    const respGrupo = await fetch('/usuarios/listarGrupoFavorito/')
+    const dadosGrupo = await respGrupo.json()
+    console.log(dadosGrupo)
+
+    var labels_grupos = [];
+    var quantidade_grupos = [];
+
+    for (var i = 0; i < dadosGrupo.length; i++) {
+      labels_grupos[i] = dadosGrupo[i].nome
+      quantidade_grupos[i] = dadosGrupo[i].qtdEscolhidoGrupo
+    }
+
+    const data_grupo = {
+      labels: labels_grupos,
+      datasets: [{
+        label: 'Artistas favoritos',
+        backgroundColor: 'rgb(0, 0, 255)',
+        borderColor: 'rgb(0, 0, 255)',
+        data: quantidade_grupos,
+      }]
+    }
+
+    const config_grupo = {
+      type: 'bar',
+      data: data_grupo,
+      options: {}
+    }
+    let myChart2 = new Chart(
+      document.getElementById('myChart2'),
+      config_grupo
+    )
   }
 
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  }
-
-
-</script>
-
-<script>
-  let myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  )
+  listar()
 </script>

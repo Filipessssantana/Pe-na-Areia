@@ -241,7 +241,7 @@ p span{
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: #4ed0e4;
   height: 20vh;
   color: #fff;
   display: flex;
@@ -255,4 +255,14 @@ p span{
 
 .footer .container .version {
   font-size: 12px;
+}
+
+.footer .contato{
+  height: 24px;
+  text-align: start;
+}
+
+.footer .contato img{
+  height: 16px;
+  margin-top: 7px;
 }

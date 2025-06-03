@@ -141,7 +141,7 @@ function listarGrupoFavorito(req, res) {
                 res.json(resultado)
             }
             else {
-                res.status(204).send('Nenhum cantor encontrado')
+                res.status(204).send('Nenhum grupo encontrado')
             }
         }
     )

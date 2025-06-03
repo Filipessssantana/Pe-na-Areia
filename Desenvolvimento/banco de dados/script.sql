@@ -26,16 +26,16 @@ qtdFavorito int
 );
 
 INSERT INTO catalogoCantor VALUES
-	(default, '../assets/thiaguinho.png', 'Thiaguinho', '1983-03-11', 'Ousadia e Alegria', null),
-    (default, '../assets/pericles.png', 'Péricles', '1969-06-22', 'Final de Tarde', null),
-    (default, '../assets/ferrugem.png', 'Ferrugem', '1988-10-20', 'Pirata e Tesouro', null),
-    (default, '../assets/belo.png', 'Belo', '1983-03-11', 'Desafio', null),
-    (default, '../assets/dilsinho.png', 'Dilsinho', '1983-03-11', 'Péssimo Negócio', null),
-    (default, '../assets/mumuzinho.png', 'Mumuzinho', '1983-03-11', 'Fulminante', null),
-    (default, '../assets/diogo_nogueira.png', 'Diogo Nogueira', '1983-03-11', 'Clareou', null),
-    (default, '../assets/ludmilla.png', 'Ludmilla', '1983-03-11', 'Hoje', null),
-    (default, '../assets/marvila.png', 'Márvila', '1983-03-11', 'Pode Apostar', null),
-    (default, '../assets/rodriguinho.png', 'Rodriguinho', '1983-03-11', 'Falta de Atenção', null);
+	(default, '../assets/thiaguinho.png', 'Thiaguinho', '1983-03-11', 'Ousadia e Alegria'),
+    (default, '../assets/pericles.png', 'Péricles', '1969-06-22', 'Final de Tarde'),
+    (default, '../assets/ferrugem.png', 'Ferrugem', '1988-10-20', 'Pirata e Tesouro'),
+    (default, '../assets/belo.png', 'Belo', '1983-03-11', 'Desafio'),
+    (default, '../assets/dilsinho.png', 'Dilsinho', '1983-03-11', 'Péssimo Negócio'),
+    (default, '../assets/mumuzinho.png', 'Mumuzinho', '1983-03-11', 'Fulminante'),
+    (default, '../assets/diogo_nogueira.png', 'Diogo Nogueira', '1983-03-11', 'Clareou',
+    (default, '../assets/ludmilla.png', 'Ludmilla', '1983-03-11', 'Hoje'),
+    (default, '../assets/marvila.png', 'Márvila', '1983-03-11', 'Pode Apostar'),
+    (default, '../assets/rodriguinho.png', 'Rodriguinho', '1983-03-11', 'Falta de Atenção');
 
 CREATE TABLE cantoresFavoritos (
 fkCantor int,
@@ -64,22 +64,21 @@ idGrupo int primary key auto_increment,
 foto varchar(50),
 nome varchar(70),
 idade date,
-principalHit varchar(30),
-qtdFavorito int
+principalHit varchar(30)
 );
 
 INSERT INTO catalogoGrupo VALUES
-	(default, '../assets/turma_do_pagode.png', 'Turma do Pagode', '1983-03-11', 'Lancinho', null),
-    (default, '../assets/exaltassamba.png', 'Exaltassamba', '1983-03-11', 'Livre pra Voar', null),
-    (default, '../assets/menos_e_mais.png', 'Menos é Mais', '1983-03-11', 'Adorei', null),
+	(default, '../assets/turma_do_pagode.png', 'Turma do Pagode', '1983-03-11', 'Lancinho'),
+    (default, '../assets/exaltassamba.png', 'Exaltassamba', '1983-03-11', 'Livre pra Voar'),
+    (default, '../assets/menos_e_mais.png', 'Menos é Mais', '1983-03-11', 'Adorei'),
     (default, '../assets/pixote.png', 'Pixote', '1983-03-11', 'Insegurança'),
-    (default, '../assets/grupo_revelacao.png', 'Grupo Revelação', '1983-03-11', 'Deixa Acontecer', null),
-    (default, '../assets/soweto.png', 'Soweto', '1983-03-11', 'Derê', null),
-    (default, '../assets/jeito_moleque.png', 'Jeito Moleque', '1983-03-11', 'Me Faz Feliz', null),
-    (default, '../assets/katinguele.png', 'Katinguelê', '1983-03-11', 'Inaraí', null),
-    (default, '../assets/bom_gosto.png', 'Bom Gosto', '1983-03-11', 'Patricinha do Olho Azul', null),
-    (default, '../assets/sorriso_maroto.png', 'Sorriso Maroto', '1983-03-11', 'Futuro Prometido', null),
-    (default, '../assets/di_proposito.png', 'Di Propósito', '1983-03-11', 'Manda Áudio', null);
+    (default, '../assets/grupo_revelacao.png', 'Grupo Revelação', '1983-03-11', 'Deixa Acontecer'),
+    (default, '../assets/soweto.png', 'Soweto', '1983-03-11', 'Derê'),
+    (default, '../assets/jeito_moleque.png', 'Jeito Moleque', '1983-03-11', 'Me Faz Feliz'),
+    (default, '../assets/katinguele.png', 'Katinguelê', '1983-03-11', 'Inaraí'),
+    (default, '../assets/bom_gosto.png', 'Bom Gosto', '1983-03-11', 'Patricinha do Olho Azul'),
+    (default, '../assets/sorriso_maroto.png', 'Sorriso Maroto', '1983-03-11', 'Futuro Prometido'),
+    (default, '../assets/di_proposito.png', 'Di Propósito', '1983-03-11', 'Manda Áudio');
 
 CREATE TABLE gruposFavoritos (
 fkGrupo int,

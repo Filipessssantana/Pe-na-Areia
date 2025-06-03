@@ -31,13 +31,7 @@
             <a href="cantores.html">Cantores</a>
           </li>
           <li>
-            <a href="grupos.html">Grupos</a>
-          </li>
-          <li>
-            <a href="dashboard_cantores.html">Dash Cantores</a>
-          </li>
-          <li>
-            <a href="dashboard_grupos.html">Dash Grupos</a>
+            <a href="dashboard_cantores.html">Dashboard</a>
           </li>
           <li>
             <a href="quiz.html">Quiz</a>
@@ -48,18 +42,17 @@
 
     <div class="banner">
       <div class="container">
-        <p>Está pronto para mostrar quão pagodeiro você é? Vamos lá!</p>
-      </div>
-    </div>
+        <div>
+          Bem vindo ao Quiz com Pagode, vamos ver quão pagodeiro você é...
+        </div>
 
-    <div class="quizzes">
-      <div class="quiz">
-        <div class="descricao-quiz">
-          <h1>Qual é a música?</h1>
-          Mostre que conhece o nome das músicas de cór
+        <button onclick="iniciar()">Iniciar</button>
+        <div id="div_mensagem">
+
         </div>
+        <div id="div_mensagem_resposta">
+          <div id="botao_avancar"></div>
         </div>
-      </div>
     </div>
   </div>
 
@@ -67,12 +60,15 @@
     <div class="container">
       <div class="contatos">
         <div class="contato">
+          <img src="./assets/icon/whatsapp.png" alt="">
           (11) 95530-0105
         </div>
         <div class="contato">
+          <img src="./assets/icon/telefone.png" alt="">
           (11) 95530-0105
         </div>
         <div class="contato" id="email">
+          <img src="./assets/icon/email.png" alt="">
           penaareia@gmail.com
         </div>
       </div>
@@ -89,3 +85,35 @@
 </body>
 
 </html>
+
+<script>
+  function iniciar() {
+
+    var perguntas = ['abcd', 'efgh', 'ijkl']
+    var opcao = [['a','b','c','d'], ['e','f','g','h'], ['i','j','k','l']]
+    var resposta = ['b', 'h', 'i']
+
+    for (var i = 0; i < perguntas.length; i++) {
+      for (var j = 0; i < opcao.length; j++) {
+        div_mensagem =
+          `${[i + 1]}. ${perguntas[i]}<br>
+           A)${opcao[i][j]}<br>
+           B)${opcao[i][j]}<br>
+           C)${opcao[i][j]}<br>
+           D)${opcao[i][j]}<br>
+           
+           <input type="text" id="input_resposta" placeholder="Resposta...">`
+           
+           var resposta_usuario = input_resposta.value
+           if(resposta_usuario == resposta[i]) {
+            div_mensagem_resposta = `Parabéns, você acertou!`
+           } else {
+            div_mensagem_resposta = `Que pena, você errou`
+           }
+           botao_avancar.innerHTML = `<button onclick="seguir()">Próxima pergunta</button>`
+      }
+
+    }
+  }
+
+</script>

@@ -43,7 +43,7 @@ body {
   /* border-bottom: 2px solid #32b9cd; */
   background-color: transparent;
   /* border: 2px black solid; */
-  height: 13%;
+  height: 115px;
 }
 
 .header .container {
@@ -101,6 +101,8 @@ body {
   height: 80%;
   color: #eaa846;
   background-size: cover;
+  display: flex;
+  flex-direction: row;
 }
 
 .banner .container {
@@ -121,8 +123,8 @@ body {
 
 .grafico{
   display: flex;
-  height: 90%;
-  width: 80%;
+  height: 100%;
+  width: 75%;
   justify-content: center;
 }
 
@@ -249,7 +251,7 @@ p span{
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: #4ed0e4;
   height: 20vh;
   color: #fff;
   display: flex;
@@ -266,5 +268,11 @@ p span{
 }
 
 .footer .contato{
-  height: 25px;
+  height: 24px;
+  text-align: start;
+}
+
+.footer .contato img{
+  height: 16px;
+  margin-top: 7px;
 }

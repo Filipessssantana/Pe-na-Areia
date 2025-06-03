@@ -1,6 +1,6 @@
-CREATE DATABASE pe_na_areia;
+CREATE DATABASE penaareia;
 
-USE pe_na_areia;
+USE penaareia;
 
 CREATE TABLE usuario (
 idUsuario int primary key auto_increment,
@@ -16,8 +16,9 @@ INSERT INTO usuario VALUES
 
 CREATE TABLE catalogoCantor (
 idCantor int primary key auto_increment,
+foto varchar(50),
 nome varchar(70),
-idade date,
+dtNasc date,
 principalHit varchar(30)
 );
 
@@ -50,15 +51,16 @@ INSERT INTO cantoresFavoritos VALUES
     (3, 1, 3),
     (4, 2, 3),
     (5, 2, 2),
-    (6, 2, 1),
-    (7, 3, 3),
-    (8, 3, 1),
-    (9, 3, 2);
+    (3, 2, 1),
+    (4, 3, 2),
+    (3, 3, 3),
+    (1, 3, 1);
 
 CREATE TABLE catalogoGrupo (
 idGrupo int primary key auto_increment,
+foto varchar(50),
 nome varchar(70),
-idade date,
+dtNasc date,
 principalHit varchar(30)
 );
 
@@ -90,41 +92,9 @@ INSERT INTO gruposFavoritos VALUES
 	(1, 1, 1),
     (2, 1, 2),
     (3, 1, 3),
-    (4, 2, 3),
-    (5, 2, 2),
-    (6, 2, 1),
-    (7, 3, 3),
-    (8, 3, 1),
-    (9, 3, 2);
-
-CREATE TABLE quiz (
-idQuiz int primary key auto_increment,
-nome varchar(30),
-tipo varchar(30),
-dtQuiz datetime
-);
-
-INSERT INTO quiz(nome, tipo) VALUES
-	('Qual é a música?', 'música'),
-    ('Quem é o cantor?', 'cantor'),
-    ('Complete a música?', 'completar'),
-    ('De quando é?', 'data');
-
-CREATE TABLE pontuacao (
-fkQuiz int,
-fkUsuario int,
-idPontuacao int,
-constraint pkQuizUsuario
-	PRIMARY KEY (fkQuiz, fkUsuario, idPontuacao),
-acertos int,
-erros int,
-constraint fkQuizUsuario
-	foreign key (fkQuiz) references quiz(idQuiz),
-	foreign key (fkUsuario) references usuario(idUsuario)
-);
-
-INSERT INTO pontuacao VALUES
-	(1, 1, 1, 6, 4),
-    (2, 1, 2, 7, 3),
-    (3, 2, 3, 3, 7),
-    (4, 3, 4, 5, 5);
+    (4, 2, 1),
+    (5, 2, 3),
+    (6, 2, 2),
+    (7, 3, 2),
+    (8, 3, 3),
+    (9, 3, 1);
